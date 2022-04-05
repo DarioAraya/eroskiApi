@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const conectando = require('./src/mysql_connector.js');
 
-const {insert,read}=require('./operations');
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -17,16 +17,16 @@ app.get('/', (req,res)=>{
     res.render('home')
 })
 
-app.get('/insert', (req,res)=>{
-    insert(conectando,(result)=>{
-    res.json(result);
+app.get('/eroski', async (req,res)=>{
+    const sql = await 'SELECT * FROM product';
+    conectando.query(sql, (error, results)=>{
+        if(error) throw error;
+        if(results.length>0){
+            res.render('eroski/index',{results})
+        }else{
+            res.send('Not results')
+        }
     })
-})
-
-app.get('/read', (req,res)=>{
-    read(conectando,(result)=>{
-    res.json(result);
-    });
 });
 
 
