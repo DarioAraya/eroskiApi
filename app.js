@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const conectando = require('./src/mysql_connector.js');
 const ejsMate = require("ejs-mate");
+const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 
 app.engine('ejs',ejsMate)
 app.set('view engine', 'ejs');
@@ -15,25 +17,62 @@ conectando.connect((err)=>{
 });
 
 
-app.get('/',(req,res)=>{
-    let sql =  'SELECT * FROM product';
-    conectando.query(sql,  (err, results) => {
-       if(err) throw err;     
-           res.render('eroski/index',{data: results} );    
-      })   
-});
+app.get('/', catchAsync(async(req,res,next)=>{
+   
+        let sql =  'SELECT * FROM product';
+       await conectando.query(sql,  (err, results) => {
+           if(err) throw err;   
+            sql =  'SELECT * FROM category';
+            conectando.query(sql,(error,results2)=>{
+                if(error) throw error; 
+                res.render('eroski/index',{data: results, data2: results2})  
+          
+            })
+              
+          })
+  
+}));
 
 
-app.get('/search', (req,res)=>{
+app.get('/search', catchAsync(async(req,res,next)=>{
     let name = req.query.name;
         var sql = `SELECT * from product where name LIKE '%${name}%'`;
-        conectando.query(sql,(err,results)=>{
+       await conectando.query(sql,(err,results)=>{
             if(err)throw err;
-            res.render('eroski/index',{data:results});
+            sql =  'SELECT * FROM category';
+            conectando.query(sql,(error,results2)=>{
+                if(error) throw error; 
+                res.render('eroski/index',{data: results, data2: results2})  
+                
+            })
         });
+}));
+
+app.get('/filter', catchAsync(async(req,res,next)=>{
+    let id = req.query.id;
+        var sql = `SELECT * from product where category LIKE '%${id}%'`;
+       await conectando.query(sql,(err,results)=>{
+            if(err)throw err;
+            sql =  'SELECT * FROM category';
+            conectando.query(sql,(error,results2)=>{
+                if(error) throw error; 
+                res.render('eroski/index',{data: results, data2: results2})  
+                
+            })
+        });
+}));
+
+
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404))
 })
 
-
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+    return res.status(statusCode).render('error', { err })
+})
 
 app.listen(3000, ()=>{
     console.log('Serving on port 3000')

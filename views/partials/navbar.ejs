@@ -10,20 +10,26 @@
       </a>
     </div>
     <div class="col-4">
-      <div class="dropdown">
+      <div class="btn-group">
         <button
-          class="btn btn-secondary dropdown-toggle"
           type="button"
-          id="dropdownMenuButton1"
+          class="btn btn-outline-info dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Dropdown button
+          Filtrar por categor&#237;a
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <ul class="dropdown-menu">
+          <% for( let arr of data2) {%>
+          <li>
+            <a class="dropdown-item" href="/filter?id=<%= arr.id %>"
+              ><%= arr.name[0].toUpperCase() + arr.name.slice(1) %>
+            </a>
+          </li>
+          <% } %>
+
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="/">Quitar el filtro</a></li>
         </ul>
       </div>
     </div>
