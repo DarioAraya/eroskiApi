@@ -1,0 +1,50 @@
+body {
+    font-family: "Roboto", sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+  }
+  
+  .navbar-nav {
+    font-weight: bold;
+  }
+  
+  
+  #imgLogo {
+    width: 10%;
+  }
+  
+  .footer {
+    color: #810030;
+    background-color: #e3e3e4;
+  }
+  
+  .navbar {
+    background-color: #ffffff;
+  }
+  
+  #container {
+    display: flex;
+  }
+  
+  #imgLogo {
+    width: 35%;
+    margin-right: 100px;
+  }
+  
+  #imgs {
+    width: 300px;
+  }
+
+  
+  #error {
+    margin-bottom: 120px;
+  }
+  
+  
+  #iconSocial {
+    width: 5%;
+  }
+  
+
+ 

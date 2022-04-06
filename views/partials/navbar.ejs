@@ -1,0 +1,66 @@
+<nav class="navbar sticky-top navbar-expand-md navbar-light">
+  <div class="container-fluid row">
+    <div class="col-1"></div>
+    <div class="col-2">
+      <a class="navbar-brand" href="/">
+        <img
+          src="https://pbs.twimg.com/profile_images/1214914494813618176/4oYlKZVB_400x400.png"
+          width="100"
+        />
+      </a>
+    </div>
+    <div class="col-4">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse align-self-end d-flex justify-content-end col-5"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav">
+            <form action="/search" class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                name="name"
+                placeholder="&#191;Qu&#233; est&#225;s buscando?"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-info" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</nav>
