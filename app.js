@@ -37,7 +37,9 @@ app.get('/', catchAsync(async(req,res,next)=>{
 
 app.get('/search', catchAsync(async(req,res,next)=>{
     let name = req.query.name;
- 
+    if(name.indexOf('"')!=-1){
+       name = name.replace(/['"]+/g, '')
+    }
         var sql = `SELECT * from product where name LIKE '%${name}%'`;
     
         
