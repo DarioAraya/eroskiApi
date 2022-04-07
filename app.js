@@ -6,6 +6,7 @@ const ejsMate = require("ejs-mate");
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 
+
 app.engine('ejs',ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +37,10 @@ app.get('/', catchAsync(async(req,res,next)=>{
 
 app.get('/search', catchAsync(async(req,res,next)=>{
     let name = req.query.name;
+ 
         var sql = `SELECT * from product where name LIKE '%${name}%'`;
+    
+        
        await conectando.query(sql,catchAsync(async(err,results)=>{
             if(err)throw err;
             sql =  'SELECT * FROM category';
