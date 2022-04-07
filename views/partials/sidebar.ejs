@@ -1,0 +1,14 @@
+<div id="sidebar-container" class="bg-primary">
+  <div class="logo">
+    <a href="/"> <h4 class="text-light" id="logoTitle">BSale Test</h4></a>
+  </div>
+  <div class="menu">
+    <% for( let arr of data2) {%>
+
+    <a href="/filter?id=<%= arr.id %>" class="d-block text-light p-3"
+      ><%= arr.name[0].toUpperCase() + arr.name.slice(1) %>
+    </a>
+
+    <% } %>
+  </div>
+</div>

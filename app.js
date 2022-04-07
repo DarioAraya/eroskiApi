@@ -19,7 +19,7 @@ const prueba =['nombreA','nombreD','precioA','precioD'];
 
 app.get('/', catchAsync(async(req,res,next)=>{
    
-        let sql =  'SELECT * FROM product';
+        let sql =  'SELECT * FROM product where category LIKE 1';
        await conectando.query(sql,catchAsync(async(err, results) => {
            if(err) throw err;   
             sql =  'SELECT * FROM category';

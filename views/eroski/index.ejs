@@ -1,38 +1,56 @@
 <% layout('./layouts/boilerplate') %>
+<div class="container mb-5 mt-5" id="containerCard">
+  <div class="row">
+    <% for(let arr of data){ %>
+    <div class="col-md-4">
+      <div class="card mt-3">
+        <div class="product-1 aling-items-center p-2 text-center">
+          <% if(arr.url_image){%>
+          <img
+            src="<%= arr.url_image%>"
+            alt=""
+            class="rounded"
+            height="160"
+            width="160"
+          />
+          <%}else{ %>
+          <img
+            src="https://www.yeaah.co/wp-content/uploads/2021/08/producto-sin-imagen.jpg"
+            alt=""
+            class="rounded"
+            height="160"
+            width="160"
+          />
+          <% } %>
+          <h5><%= arr.name%></h5>
 
-<!-- Funcion para reducir un array de letas -->
+          <div class="cost mt-3 text-dark">
+            <% if(arr.discount>0) {%>
 
-<div class="row offset-md-1">
-  <% for(let arr of data){ %>
+            <span>
+              $<%= Math.round(arr.price-(arr.price * arr.discount /100))%>
+            </span>
+            <span>
+              $<del><%= arr.price%></del>
 
-  <div class="card text-center col-2" style="width: 18rem" id="carta">
-    <% if(arr.url_image){%>
-    <img
-      class="card-img-top"
-      src="<%= arr.url_image%>"
-      alt="Card image cap"
-      id="imgs"
-    />
-    <%}else{ %>
-    <img
-      class="card-img-top"
-      src="https://www.yeaah.co/wp-content/uploads/2021/08/producto-sin-imagen.jpg"
-      alt="Card image cap"
-      id="imgs"
-    />
+              <span
+                >-<%=arr.discount%>%<ion-icon
+                  src="/path/to/external/file.svg"
+                ></ion-icon
+              ></span>
+            </span>
+            <% }else{ %>
+            <span> $<%= arr.price%> </span>
+            <% } %>
+          </div>
+        </div>
+        <!--BOTON DE LAS TARJETAS-->
+        <div class="p-3 product text-center text-white mt-3 cursor">
+          <span class="text-uppercase">Add to cart</span>
+        </div>
+      </div>
+    </div>
     <% } %>
-    <div>
-      <h5 class="card-title">
-        <b> <%= arr.name %> </b>
-      </h5>
-    </div>
-
-    <b> $<%= arr.price %> </b>
-
-    <div>
-      <a href="#" class="btn btn-info" id="btnComprar">Comprar</a>
-    </div>
+    <!--LA CARTA TERMINA AQUI-->
   </div>
-
-  <% } %>
 </div>

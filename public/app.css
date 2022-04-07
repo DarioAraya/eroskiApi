@@ -1,50 +1,113 @@
-body {
-    font-family: "Roboto", sans-serif;
-    max-width: 100%;
-    overflow-x: hidden;
-    display: flex;
-  }
-  
-  .navbar-nav {
-    font-weight: bold;
-  }
-  
-  
-  #imgLogo {
-    width: 10%;
-  }
-  
-  .footer {
-    color: #810030;
-    background-color: #e3e3e4;
-  }
-  
-  .navbar {
-    background-color: #ffffff;
-  }
-  
-  #container {
-    display: flex;
-  }
-  
-  #imgLogo {
-    width: 35%;
-    margin-right: 100px;
-  }
-  
-  #imgs {
-    width: 300px;
-  }
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css";
 
-  
-  #error {
-    margin-bottom: 120px;
-  }
-  
-  
-  #iconSocial {
-    width: 5%;
-  }
-  
+:root{
+  --primary: #111b54;
+  --ligth: #ffffff;
+  --grey:#efefef;
+}
 
- 
+body{
+  overflow: hidden;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+  color: var(--primary);
+  background-color: var(--grey);
+}
+
+a:hover{
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}
+
+.bg-primary{
+  background-color: var(--primary) !important;
+}
+.bg-light{
+  background-color: var(--ligth) !important;
+}
+
+#sidebar-container{
+  min-height: 100vh;
+}
+
+#sidebar-container .logo{
+  padding: .875rem 1.25rem;
+}
+
+#sidebar-container .menu{
+width: 18rem;
+}
+
+#sidebar-container #logoTitle{
+  font-weight: bold;
+} 
+
+.btn-search{
+  right: 5px;
+}
+
+.avatar{
+  max-height: 90px;
+}
+
+
+#content{
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.container #containerCard{
+  margin-top: 110px !important;
+}
+
+.card{
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 20px;
+  
+}
+
+.card:hover{
+  transform: translateY(-15px);
+  transition: transform .3s;
+}
+
+.text1{
+  font-size: 13px;
+  color: #cbcbcb;
+}
+
+.cost span{
+  color: #fb3531;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.product{
+  background: #dc3525;
+}
+
+.product:hover{
+  opacity: .8;
+}
+
+.cursor{
+  cursor: pointer;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media(max-width:768px) {
+  #sidebar-container{
+    display:none;
+  }
+}
+
+.error-container{
+
+ margin-top: 50px;
+}
