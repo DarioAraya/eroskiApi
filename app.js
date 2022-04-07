@@ -20,10 +20,10 @@ const prueba =['nombreA','nombreD','precioA','precioD'];
 
 app.get('/', catchAsync(async(req,res,next)=>{
    
-        let sql =  'SELECT * FROM product where category LIKE 1';
+        let sql =  "SELECT * FROM product where category LIKE 1";
        await conectando.query(sql,catchAsync(async(err, results) => {
            if(err) throw err;   
-            sql =  'SELECT * FROM category';
+            sql =  "SELECT * FROM category";
            await conectando.query(sql,(error,results2)=>{
                 if(error) throw error; 
                 res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
@@ -38,12 +38,12 @@ app.get('/', catchAsync(async(req,res,next)=>{
 app.get('/search', catchAsync(async(req,res,next)=>{
     let name = req.query.name;
  
-        var sql = `SELECT * from product where name LIKE '%${name}%'`;
+        var sql = `SELECT * from product where name LIKE "%${name}%"`;
     
         
-       await conectando.query(sql,catchAsync(async(err,results)=>{
+        conectando.query(await sql,catchAsync(async(err,results)=>{
             if(err)throw err;
-            sql =  'SELECT * FROM category';
+            sql =  "SELECT * FROM category";
             await conectando.query(sql,(error,results2)=>{
                 if(error) throw error; 
                 res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
@@ -54,10 +54,10 @@ app.get('/search', catchAsync(async(req,res,next)=>{
 
 app.get('/filter', catchAsync(async(req,res,next)=>{
     let id = req.query.id;
-        var sql = `SELECT * from product where category LIKE '%${id}%'`;
+        var sql = `SELECT * from product where category LIKE "%${id}%"`;
        await conectando.query(sql,catchAsync(async(err,results)=>{
             if(err)throw err;
-            sql =  'SELECT * FROM category';
+            sql =  "SELECT * FROM category";
             await conectando.query(sql,(error,results2)=>{
                 if(error) throw error; 
                 res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
