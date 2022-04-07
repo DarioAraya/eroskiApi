@@ -37,19 +37,21 @@ app.get('/', catchAsync(async(req,res,next)=>{
 
 app.get('/search', catchAsync(async(req,res,next)=>{
     let name = req.query.name;
- 
+        if(name.indexOf('"')!=-1){
+           name = name.replace(/['"]+/g, '')
+        }
+       
         var sql = `SELECT * from product where name LIKE "%${name}%"`;
-    
-        
-        conectando.query(await sql,catchAsync(async(err,results)=>{
-            if(err)throw err;
-            sql =  "SELECT * FROM category";
-            await conectando.query(sql,(error,results2)=>{
-                if(error) throw error; 
-                res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-                
-            })
-        }));
+            conectando.query(await sql,catchAsync(async(err,results)=>{
+                if(err)throw err;
+                sql =  "SELECT * FROM category";
+                await conectando.query(sql,(error,results2)=>{
+                    if(error) throw error; 
+                    res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
+                    
+                })
+            }));
+      
 }));
 
 app.get('/filter', catchAsync(async(req,res,next)=>{
