@@ -26,26 +26,25 @@
 
           <div class="cost mt-3 text-dark">
             <% if(arr.discount>0) {%> <% let price =
-            Math.round(arr.price-(arr.price * arr.discount /100)) %> <% price=
-            price.toString() %>
-            <span> $<%= price[0]+"."+price.slice(1)%> </span>
+            Math.round(arr.price-(arr.price * arr.discount /100)) %>
+            <span> $<%= price %> </span>
             <span>
               $<del><%= arr.price%></del>
 
               <span>-<%=arr.discount%>%</span>
             </span>
-            <% }else{ %> <% let price = arr.price %> <% price= price.toString()
-            %>
-            <span> $<%= price[0]+"."+price.slice(1)%> </span>
+            <% }else{ %>
+            <span> $<%= arr.price%> </span>
             <% } %>
           </div>
         </div>
-
+        <!--BOTON DE LAS TARJETAS-->
         <div class="p-3 product text-center text-white mt-3 cursor">
           <span class="text-uppercase">Add to cart</span>
         </div>
       </div>
     </div>
     <% } %>
+    <!--LA CARTA TERMINA AQUI-->
   </div>
 </div>
