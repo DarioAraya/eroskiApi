@@ -25,16 +25,26 @@
           <h5><%= arr.name%></h5>
 
           <div class="cost mt-3 text-dark">
-            <% if(arr.discount>0) {%> <% let price =
-            Math.round(arr.price-(arr.price * arr.discount /100)) %>
-            <span> $<%= price %> </span>
+            <!--ESTO SIRVE PARA PONERLE EL PUNTO AL PRECIO-->
+            <% let price = Math.round(arr.price-(arr.price * arr.discount
+            /100))%>
+
+            <!-- -->
+            <% let price2 = new Intl.NumberFormat('es-CL', { style: 'currency',
+            currency: 'CLP' }).format(price)%>
+            <!-- -->
+            <% let price3 = new Intl.NumberFormat('es-CL', { style: 'currency',
+            currency: 'CLP' }).format(arr.price) %>
+            <!-- -->
+            <% if(arr.discount>0) {%>
+            <span> <%= price2 %> </span>
             <span>
-              $<del><%= arr.price%></del>
+              <del><%= price3%></del>
 
               <span>-<%=arr.discount%>%</span>
             </span>
             <% }else{ %>
-            <span> $<%= arr.price%> </span>
+            <span> <%= price3%> </span>
             <% } %>
           </div>
         </div>
