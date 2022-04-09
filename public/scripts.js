@@ -1,9 +1,9 @@
 
 
-const nombreA = document.querySelector('#nombreASC');
+const filter = document.querySelector('#filter');
 
 
-nombreA.addEventListener('click',()=>{
+filter.addEventListener('click',()=>{
  
 })
 

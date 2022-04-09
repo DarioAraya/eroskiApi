@@ -41,33 +41,33 @@
               Ordenar por
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-             
-               
-                  <a class="dropdown-item" id="nombreASC" 
-                    >Nombre(A-Z) 
-                  </a>
-
-                 
-             
-                 
-                  <a class="dropdown-item" onclick="sortingASC()"
-                    >Nombre(Z-A)
+              
+              <% for(let arr of data3) {%>
+                <li>
+                  <% if(arr == "nombreA"){ %>
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                    >Nombre(A-Z) <% } %>
                   </a>
   
-                 
-                  <a class="dropdown-item"
-                    >Mayor Preci
+                  <% if(arr == "nombreD"){ %>
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                    >Nombre(Z-A)<% } %>
                   </a>
   
-                 
-                  <a class="dropdown-item" 
-                    >Menor Precio
+                  <% if(arr == "precioA"){ %>
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                    >Mayor Precio<% } %>
+                  </a>
+  
+                  <% if(arr == "precioD"){ %>
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                    >Menor Precio<% } %>
                   </a>
                 </li>
-              
+                <% } %>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <li><a class="dropdown-item">Quitar el filtro</a></li>
+                <li><a class="dropdown-item" href="/">Quitar el filtro</a></li>
               </li>
             </ul>
           </li>

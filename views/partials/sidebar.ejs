@@ -5,7 +5,10 @@
   <div class="menu">
     <% for( let arr of data2) {%>
 
-    <a href="/filter?id=<%= arr.id %>" class="d-block text-light p-3"
+    <a
+      href="/filter?id=<%= arr.id %>"
+      class="d-block text-light p-3"
+      id="filter"
       ><%= arr.name[0].toUpperCase() + arr.name.slice(1) %>
     </a>
 

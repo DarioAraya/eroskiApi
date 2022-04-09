@@ -23,7 +23,7 @@ const prueba =['nombreA','nombreD','precioA','precioD'];
 
 app.get('/',catchAsync(async(req,res,next)=>{
    
-        let sql =  'SELECT * FROM product where category LIKE 1';
+        let sql =  'SELECT * FROM product';
        await conectando.query(sql,catchAsync(async(err, results) => {
            if(err) throw err;   
             sql =  'SELECT * FROM category';
@@ -35,6 +35,8 @@ app.get('/',catchAsync(async(req,res,next)=>{
             });
           }));
 }));
+
+
 
 
 
@@ -74,14 +76,15 @@ app.get('/filter', catchAsync(async(req,res,next)=>{
 
 
 app.get('/sort', catchAsync(async(req,res,next)=>{
-    let id = req.query.id;
-    if(id==='nombreA'){
+    let sortBy = req.query.sortBy;
+  
+    if(sortBy==='nombreA'){
         var sql = `SELECT * from product ORDER BY name`;
-    }else if(id==='nombreD'){
+    }else if(sortBy==='nombreD'){
         var sql = `SELECT * from product ORDER BY name DESC`;
-    }else if(id==='precioA'){
+    }else if(sortBy==='precioA'){
         var sql = `SELECT * from product ORDER BY price DESC`;
-    }else if(id==='precioD'){
+    }else if(sortBy==='precioD'){
         var sql = `SELECT * from product ORDER BY price`;
     }else{
         var sql = `SELECT * from product`;
