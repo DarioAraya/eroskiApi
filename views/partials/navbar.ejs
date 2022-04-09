@@ -45,29 +45,29 @@
               <% for(let arr of data3) {%>
                 <li>
                   <% if(arr == "nombreA"){ %>
-                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
-                    >Nombre(A-Z) <% } %>
+                  <a class="dropdown-item"  href="/sort?sortBy=<%= arr %>" id="filter"
+                    >Nombre(A-Z)  <% } %>
                   </a>
   
                   <% if(arr == "nombreD"){ %>
-                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>" id="filter2"
                     >Nombre(Z-A)<% } %>
                   </a>
   
                   <% if(arr == "precioA"){ %>
-                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>" id="filter3"
                     >Mayor Precio<% } %>
                   </a>
   
                   <% if(arr == "precioD"){ %>
-                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>"
+                  <a class="dropdown-item" href="/sort?sortBy=<%= arr %>" id="filter4"
                     >Menor Precio<% } %>
                   </a>
                 </li>
                 <% } %>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <li><a class="dropdown-item" href="/">Quitar el filtro</a></li>
+                <li><a class="dropdown-item" href="/sort" id="filter5">Quitar el filtro</a></li>
               </li>
             </ul>
           </li>

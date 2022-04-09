@@ -3,13 +3,10 @@
     <a href="/"> <h4 class="text-light" id="logoTitle">BSale Test</h4></a>
   </div>
   <div class="menu">
-    <% for( let arr of data2) {%>
+    <% for( let arr2 of data2) {%>
 
-    <a
-      href="/filter?id=<%= arr.id %>"
-      class="d-block text-light p-3"
-      id="filter"
-      ><%= arr.name[0].toUpperCase() + arr.name.slice(1) %>
+    <a href="/filter?id=<%= arr2.id %>" class="d-block text-light p-3"
+      ><%= arr2.name[0].toUpperCase() + arr2.name.slice(1) %>
     </a>
 
     <% } %>

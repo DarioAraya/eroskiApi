@@ -16,6 +16,8 @@ conectando.connect((err)=>{
     if(err) throw err;
     console.log("Conectado a la base");
 });
+
+
 const prueba =['nombreA','nombreD','precioA','precioD'];
 
 
@@ -23,7 +25,7 @@ const prueba =['nombreA','nombreD','precioA','precioD'];
 
 app.get('/',catchAsync(async(req,res,next)=>{
    
-        let sql =  'SELECT * FROM product';
+        let sql =  'SELECT * FROM product where category = 1';
        await conectando.query(sql,catchAsync(async(err, results) => {
            if(err) throw err;   
             sql =  'SELECT * FROM category';
@@ -77,18 +79,20 @@ app.get('/filter', catchAsync(async(req,res,next)=>{
 
 app.get('/sort', catchAsync(async(req,res,next)=>{
     let sortBy = req.query.sortBy;
-  
+    let id = req.query.id;
+
     if(sortBy==='nombreA'){
-        var sql = `SELECT * from product ORDER BY name`;
+        var sql = `SELECT * from product where category = '${id}' ORDER BY name`;
     }else if(sortBy==='nombreD'){
-        var sql = `SELECT * from product ORDER BY name DESC`;
+        var sql = `SELECT * from product where category = '${id}' ORDER BY name DESC`;
     }else if(sortBy==='precioA'){
-        var sql = `SELECT * from product ORDER BY price DESC`;
+        var sql = `SELECT * from product where category = '${id}' ORDER BY price DESC`;
     }else if(sortBy==='precioD'){
-        var sql = `SELECT * from product ORDER BY price`;
+        var sql = `SELECT * from product where category = '${id}' ORDER BY price`;
     }else{
-        var sql = `SELECT * from product`;
+        var sql = `SELECT * from product where category = '${id}'`;
     }
+    
        await conectando.query(sql,catchAsync(async(err,results)=>{
             if(err)throw err;
             sql =  'SELECT * FROM category';

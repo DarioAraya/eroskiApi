@@ -1,28 +1,25 @@
 
 
 const filter = document.querySelector('#filter');
-
+const filter2 = document.querySelector('#filter2');
+const filter3 = document.querySelector('#filter3');
+const filter4 = document.querySelector('#filter4');
+const filter5 = document.querySelector('#filter5');
 
 filter.addEventListener('click',()=>{
- 
+    filter.href += `&id=${type}`;
+})
+filter2.addEventListener('click',()=>{
+    filter2.href += `&id=${type}`;
+})
+filter3.addEventListener('click',()=>{
+    filter3.href += `&id=${type}`;
+})
+filter4.addEventListener('click',()=>{
+    filter4.href += `&id=${type}`;
+})
+filter5.addEventListener('click',()=>{
+    filter5.href += `?sortBy=null&id=${type}`;
 })
 
 
-
-
-//Ordenar por precio Menor a Mayor
-function sortingASC(x){
-    const newArray = x.sort((a,b)=>{ if(a.price < b.price){ return 1 }else{
-        return -1 } }) 
-        console.log(newArray.map((array)=>array.name))
-}
-
-
-
-
-
-function sortingDESC(x){
-    const newArray = x.sort((a,b)=>{ if(a.price > b.price){ return 1 }else{
-        return -1 } }) 
-        console.log(newArray.map((array)=>array.name))
-}
