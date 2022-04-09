@@ -18,21 +18,24 @@ conectando.connect((err)=>{
 });
 const prueba =['nombreA','nombreD','precioA','precioD'];
 
-app.get('/', catchAsync(async(req,res,next)=>{
+
+
+
+app.get('/',catchAsync(async(req,res,next)=>{
    
         let sql =  'SELECT * FROM product where category LIKE 1';
        await conectando.query(sql,catchAsync(async(err, results) => {
            if(err) throw err;   
             sql =  'SELECT * FROM category';
            await conectando.query(sql,(error,results2)=>{
+ 
                 if(error) throw error; 
                 res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-          
+                return results;
             });
-              
           }));
-  
 }));
+
 
 
 app.get('/search', catchAsync(async(req,res,next)=>{
