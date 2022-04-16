@@ -4,8 +4,11 @@ node app.js
 DESCARGAR LIBRERIAS
 npm i dotenv ejs ejs-mate express mysql
 
-REPOSITORIO DE GITHUB
+REPOSITORIO DE GITHUB FRONTEND
 https://github.com/DarioAraya/eroskiApi/
+
+REPOSITORIO DE GITHUB BACKEND
+https://github.com/DarioAraya/eroskiApi-Backend
 
 PROYECTO DESPLEGADO FRONTEND
 https://api-eroski.herokuapp.com
