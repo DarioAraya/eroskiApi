@@ -2,7 +2,7 @@ PARA EJECUTAR PROYECTO
 node app.js
 
 DESCARGAR LIBRERIAS
-npm i dotenv ejs ejs-mate express mysql
+npm i dotenv axios ejs ejs-mate express mysql
 
 REPOSITORIO DE GITHUB FRONTEND
 https://github.com/DarioAraya/eroskiApi/
