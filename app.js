@@ -1,96 +1,52 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const conectando = require('./src/mysql_connector.js');
 const ejsMate = require("ejs-mate");
 const catchAsync = require('./utils/catchAsync');
+const axios = require('axios').default;
 const ExpressError = require('./utils/ExpressError');
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.engine('ejs',ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
 
-conectando.connect((err)=>{
-    if(err) throw err;
-    console.log("Conectado a la base");
-});
-
-const prueba =['nombreA','nombreD','precioA','precioD'];
-
+//Mostrar todos los productos de la categoria inicial
 app.get('/',catchAsync(async(req,res,next)=>{
-   
-        let sql =  'SELECT * FROM product where category = 1';
-       await conectando.query(sql,catchAsync(async(err, results) => {
-           if(err) throw err;   
-            sql =  'SELECT * FROM category';
-           await conectando.query(sql,(error,results2)=>{
- 
-                if(error) throw error; 
-                res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-                return results;
-            });
-          }));
+    const response = await axios.get('https://eroski-api-backend.herokuapp.com/all-products');
+    res.render('eroski/index',{...response.data})    
 }));
 
+//filtrar por nombre
 app.get('/search', catchAsync(async(req,res,next)=>{
-    let name = req.query.name;
-    if(name.indexOf('"')!=-1){
-       name = name.replace(/['"]+/g, '')
-    }
-        var sql = `SELECT * from product where name LIKE '%${name}%'`;
-    
-        
-       await conectando.query(sql,catchAsync(async(err,results)=>{
-            if(err)throw err;
-            sql =  'SELECT * FROM category';
-            await conectando.query(sql,(error,results2)=>{
-                if(error) throw error; 
-                res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-                
-            })
-        }));
+    let nameQuery = req.query.name;
+    const response = await axios.post('https://eroski-api-backend.herokuapp.com/find-for-name',{
+        name: nameQuery
+      })
+    res.render('eroski/index',{...response.data})  
 }));
 
+//filtrar por categoria
 app.get('/filter', catchAsync(async(req,res,next)=>{
-    let id = req.query.id;
-        var sql = `SELECT * from product where category LIKE '%${id}%'`;
-       await conectando.query(sql,catchAsync(async(err,results)=>{
-            if(err)throw err;
-            sql =  'SELECT * FROM category';
-            await conectando.query(sql,(error,results2)=>{
-                if(error) throw error; 
-                res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-             
-            })
-        }));
+    let idQuery = req.query.id;
+    const response = await axios.post('https://eroski-api-backend.herokuapp.com/filter-by-cat',{
+        id: idQuery
+      })
+    res.render('eroski/index',{...response.data})  
 }));
 
+//ordenar por
 app.get('/sort', catchAsync(async(req,res,next)=>{
-    let sortBy = req.query.sortBy;
-    let id = req.query.id;
+    let sortByQuery = req.query.sortBy;
+    let idQuery = req.query.id;
 
-    if(sortBy==='nombreA'){
-        var sql = `SELECT * from product where category = '${id}' ORDER BY name`;
-    }else if(sortBy==='nombreD'){
-        var sql = `SELECT * from product where category = '${id}' ORDER BY name DESC`;
-    }else if(sortBy==='precioA'){
-        var sql = `SELECT * from product where category = '${id}' ORDER BY price DESC`;
-    }else if(sortBy==='precioD'){
-        var sql = `SELECT * from product where category = '${id}' ORDER BY price`;
-    }else{
-        var sql = `SELECT * from product where category = '${id}'`;
-    }
-
-       await conectando.query(sql,catchAsync(async(err,results)=>{
-            if(err)throw err;
-            sql =  'SELECT * FROM category';
-           await conectando.query(sql,(error,results2)=>{
-                if(error) throw error; 
-                res.render('eroski/index',{data: results, data2: results2, data3: prueba})  
-                
-            })
-        }));
+    const response = await axios.post('https://eroski-api-backend.herokuapp.com/sort-by',{
+        id: idQuery,
+        sortBy: sortByQuery
+      })
+    res.render('eroski/index',{...response.data})  
 }));
 
 app.all('*', (req, res, next) => {
@@ -108,7 +64,3 @@ app.listen(port, ()=>{
     console.log(`Serving on port ${port}`)
 })
 
-//keep alive
-setInterval(function () {
-    conectando.query('SELECT 1');
-}, 4000);
