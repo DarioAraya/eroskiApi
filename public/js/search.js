@@ -4,12 +4,14 @@ const params = (parameterName) => {
 };
 const productFather = document.querySelector("#productFather");
 const nameQuery = params("name");
-
+const idQuery = params("id");
+var type = "";
 //PRODUCTO
 const buscar = async () => {
   try {
     const res = await axios.post("http://localhost:4000/find-for-name", {
       name: nameQuery,
+      id: idQuery,
     });
     for (const arr of res.data.products) {
       productFather.append(nuevoDiv("col-md-4", `div${arr.id}`));
@@ -83,6 +85,7 @@ const buscar = async () => {
         document.querySelector(`#span${arr.id}-4`).append(`${price3}`);
       }
       //FIN
+      type = arr.category;
       document
         .querySelector(`#div${arr.id}-2`)
         .append(
@@ -91,12 +94,10 @@ const buscar = async () => {
             `div${arr.id}-5`
           )
         );
-      var type = arr.category;
       document
         .querySelector(`#div${arr.id}-5`)
         .append(nuevoSpan(`span${arr.id}-5`, "text-uppercase"));
       document.querySelector(`#span${arr.id}-5`).append("Add to cart");
-      var type = arr.category;
     }
   } catch (e) {
     console.log("ERROR", e);

@@ -1,5 +1,5 @@
 const productFather = document.querySelector("#productFather");
-
+var type = "";
 //PRODUCTO
 const todosProd = async () => {
   try {
@@ -84,7 +84,7 @@ const todosProd = async () => {
             `div${arr.id}-5`
           )
         );
-      var type = arr.category;
+      type = arr.category;
       document
         .querySelector(`#div${arr.id}-5`)
         .append(nuevoSpan(`span${arr.id}-5`, "text-uppercase"));

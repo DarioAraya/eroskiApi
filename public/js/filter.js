@@ -5,6 +5,7 @@ const params = (parameterName) => {
 const productFather = document.querySelector("#productFather");
 const id = params("id");
 
+var type = "";
 //PRODUCTO
 const filtrar = async () => {
   try {
@@ -91,7 +92,7 @@ const filtrar = async () => {
             `div${arr.id}-5`
           )
         );
-      var type = arr.category;
+      type = arr.category;
       document
         .querySelector(`#div${arr.id}-5`)
         .append(nuevoSpan(`span${arr.id}-5`, "text-uppercase"));

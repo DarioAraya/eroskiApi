@@ -31,7 +31,27 @@
             <a href="/"> <h4 class="text-light" id="logoTitle">BSale Test</h4></a>
           </div>
           <div class="menu" id="sidebar">
-              
+            <a href="/filter?id=1" class="d-block text-light p-3"
+              >Bebida energetica
+            </a>
+            <a href="/filter?id=2" class="d-block text-light p-3"
+              >Pisco
+            </a>
+            <a href="/filter?id=3" class="d-block text-light p-3"
+              >Ron
+            </a>
+            <a href="/filter?id=4" class="d-block text-light p-3"
+              >Bebida
+            </a>
+            <a href="/filter?id=5" class="d-block text-light p-3"
+              >Snack
+            </a>
+            <a href="/filter?id=6" class="d-block text-light p-3"
+              >Cerveza
+            </a>
+            <a href="/filter?id=7" class="d-block text-light p-3"
+              >Vodka
+            </a>
           </div>
         </div>
         <!--FIN DE SIDEBAR-->
@@ -59,10 +79,18 @@
                   class="form-control me-2"
                   type="search"
                   name="name"
+                  id="inputName"
                   placeholder="&#191;Qu&#233; est&#225;s buscando?"
                   aria-label="Search"
                 />
-                <button class="btn btn-search position-absolute" type="submit">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  name="id"
+                  id="inputIdHidden"
+                  aria-label="Search"
+                />
+                <button class="btn btn-search position-absolute" type="submit" id="btnBuscar">
                   <i class="icon ion-md-search"></i>
                 </button>
               </form>
@@ -134,7 +162,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="js/sidebar.js"></script>
     <script src="js/all-products.js"></script>
     <script src="js/scripts.js"></script>
   </body>

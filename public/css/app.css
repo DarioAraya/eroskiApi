@@ -101,6 +101,10 @@ width: 18rem;
   border-bottom-right-radius: 20px;
 }
 
+ #inputIdHidden{
+   display:none;
+ }
+
 @media(max-width:768px) {
   #sidebar-container{
     display:none;

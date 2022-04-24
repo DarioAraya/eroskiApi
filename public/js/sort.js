@@ -5,7 +5,7 @@ const params = (parameterName) => {
 const productFather = document.querySelector("#productFather");
 const idQuery = params("id");
 const sortByQuery = params("sortBy");
-
+var type = "";
 //PRODUCTO
 const ordenar = async () => {
   try {
@@ -86,7 +86,7 @@ const ordenar = async () => {
         document.querySelector(`#span${arr.id}-4`).append(`${price3}`);
       }
       //FIN
-
+      type = arr.category;
       document
         .querySelector(`#div${arr.id}-2`)
         .append(
