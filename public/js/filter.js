@@ -9,9 +9,12 @@ var type = "";
 //PRODUCTOS
 const filtrar = async () => {
   try {
-    const res = await axios.post("https://localhost:4000/filter-by-cat", {
-      id,
-    });
+    const res = await axios.post(
+      "https://eroski-api-backend.herokuapp.com/filter-by-cat",
+      {
+        id,
+      }
+    );
     for (const arr of res.data.products) {
       productFather.append(nuevoDiv("col-md-4", `div${arr.id}`));
       document
