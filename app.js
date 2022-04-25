@@ -3,12 +3,17 @@ const app = express();
 const path = require("path");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
+const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
+
+const whiteList = ["https://api-eroski.herokuapp.com"];
+
+app.use(cors({ origin: whiteList }));
 
 //Mostrar todos los productos de la categoria inicial
 app.get(
