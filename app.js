@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
 
-const whiteList = ["https://api-eroski.herokuapp.com"];
+const whiteList = ["https://eroski-api-backend.herokuapp.com"];
 
 app.use(cors({ origin: whiteList }));
 
