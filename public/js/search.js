@@ -9,10 +9,13 @@ var type = "";
 //PRODUCTO
 const buscar = async () => {
   try {
-    const res = await axios.post("http://localhost:4000/find-for-name", {
-      name: nameQuery,
-      id: idQuery,
-    });
+    const res = await axios.post(
+      "https://eroski-api-backend.herokuapp.com/find-for-name",
+      {
+        name: nameQuery,
+        id: idQuery,
+      }
+    );
     for (const arr of res.data.products) {
       productFather.append(nuevoDiv("col-md-4", `div${arr.id}`));
       document

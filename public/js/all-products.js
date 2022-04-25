@@ -3,7 +3,9 @@ var type = "";
 //PRODUCTO
 const todosProd = async () => {
   try {
-    const res = await axios.get("http://localhost:4000/all-products");
+    const res = await axios.get(
+      "https://eroski-api-backend.herokuapp.com/all-products"
+    );
     for (const arr of res.data.products) {
       productFather.append(nuevoDiv("col-md-4", `div${arr.id}`));
       document
