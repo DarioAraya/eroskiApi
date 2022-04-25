@@ -6,7 +6,7 @@ const productFather = document.querySelector("#productFather");
 const nameQuery = params("name");
 const idQuery = params("id");
 var type = "";
-//PRODUCTO
+//PRODUCTOS
 const buscar = async () => {
   try {
     const res = await axios.post(

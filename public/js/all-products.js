@@ -1,6 +1,6 @@
 const productFather = document.querySelector("#productFather");
 var type = "";
-//PRODUCTO
+//PRODUCTOs
 const todosProd = async () => {
   try {
     const res = await axios.get(

@@ -6,7 +6,7 @@ const productFather = document.querySelector("#productFather");
 const idQuery = params("id");
 const sortByQuery = params("sortBy");
 var type = "";
-//PRODUCTO
+//PRODUCTOS
 const ordenar = async () => {
   try {
     const res = await axios.post(

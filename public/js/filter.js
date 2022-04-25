@@ -6,7 +6,7 @@ const productFather = document.querySelector("#productFather");
 const id = params("id");
 
 var type = "";
-//PRODUCTO
+//PRODUCTOS
 const filtrar = async () => {
   try {
     const res = await axios.post(
