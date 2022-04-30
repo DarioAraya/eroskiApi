@@ -21,7 +21,7 @@ filter4.addEventListener("click", () => {
   filter4.href += `&id=${type}`;
 });
 filter5.addEventListener("click", () => {
-  filter5.href += `?sortBy=null&id=${type}`;
+  filter5.href += `?id=${type}`;
 });
 
 /*Al realizar click en el boton buscar le añadimos a un input oculto la variable type, 
